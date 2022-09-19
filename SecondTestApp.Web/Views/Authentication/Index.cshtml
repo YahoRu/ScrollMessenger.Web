@@ -1,0 +1,27 @@
+﻿@model LoginViewModel
+
+@{
+    ViewBag.Title = "Authentication";
+}
+
+<div class="col-md-12">
+    @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+    {
+        <div class="col-md-12">
+            Name:
+         </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(Model => Model.Name)
+         </div>
+        <div class="col-md-12">
+            Password:
+         </div>
+        <div class="col-md-12">
+           @Html.TextBoxFor(Model => Model.Password)
+         </div>
+
+         <div class="col-md-12">
+            <input type="submit" value="Submit" />
+        </div>
+    }
+</div>

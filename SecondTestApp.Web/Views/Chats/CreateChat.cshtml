@@ -1,0 +1,28 @@
+﻿@model CreateChatViewModel?
+
+@{
+    ViewBag.Title = "Добавление чата";
+}
+
+
+<div class="col-md-12">
+    @using (Html.BeginForm("CreateNewChat", "Chats", FormMethod.Post))
+    {
+        <div class="col-md-12">
+            Создать группу:
+        </div>
+        <div class="col-md-12">
+            @Html.CheckBoxFor(model => model.MultipleChat)
+        </div>
+
+        <div class="col-md-12">
+            Название группы:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.ChatName)
+        </div>
+        <div class="col-md-12">
+            <input type="submit" value="Submit"/>
+        </div>
+    }
+</div>

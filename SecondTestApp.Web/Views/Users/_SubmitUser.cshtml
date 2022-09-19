@@ -1,0 +1,32 @@
+﻿
+@model CreateUserViewModel?
+
+<div class="col-md-12">
+    @using (Html.BeginForm("CreateUser", "Users", FormMethod.Post))
+    {
+        <div class="col-md-12">
+            Username:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Name)
+        </div>
+
+        <div class="col-md-12">
+            Email:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Email)
+        </div>
+
+        <div class="col-md-12">
+            Password:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Password)
+        </div>
+
+        <div class="col-md-12">
+            <input type="submit" value="Submit"/>
+        </div>
+    }
+</div>
