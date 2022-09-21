@@ -28,11 +28,17 @@ namespace SecondTestApp.Web.Controllers
         {
             if (!ModelState.IsValid) return View("Error");
 
-            var user = AuthenticateUser(loginViewModel.Name);
+            var userCheckName = _userService.ifUserNameExists(loginViewModel.Name);
+            var PasswordCheck = _userService.PasswordCheck(loginViewModel.Name, loginViewModel.Password);
+
+            if(!userCheckName && !PasswordCheck) return RedirectToAction("Failed");
+
+            var user = AuthenticateUser(loginViewModel.Name, loginViewModel.Password);
 
             var claim = new List<Claim>
             {
-                new(ClaimTypes.Name, loginViewModel.Name)
+                new(ClaimTypes.Name, loginViewModel.Name),
+                new("Password", loginViewModel.Password)
             };
 
             var claimsIdentity = new ClaimsIdentity(claim, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -46,13 +52,11 @@ namespace SecondTestApp.Web.Controllers
 
             return RedirectToAction("AuthorizedView");
         }
-
         public IActionResult AuthorizedView()
         {
             return View();
         }
 
-        [Authorize(Roles = "User")]
         public IActionResult NotAuthorizedView()
         {
             return View();
@@ -68,15 +72,14 @@ namespace SecondTestApp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
 
-        private UserViewModel? AuthenticateUser(string name)
+        private UserViewModel? AuthenticateUser(string name, string password)
         {
-            // TODO return UsersController.StaticUsers.FirstOrDefault(model => model.Name.Equals(name));
-
-            return _userService.GetAllUsers().FirstOrDefault(model => model.Equals(name)).Adapt<UserViewModel>();
+            return _userService.GetAllUsers()
+                .FirstOrDefault(model => model.Name.Equals(name) && model.Password.Equals(password)).Adapt<UserViewModel>();
         }
     }
 }

@@ -10,5 +10,7 @@ namespace SecondTestApp.Web.Models
         public string? Email { get; set; }
         [Required]
         public string? Password { get; set; }
+        [Required]
+        public string? AboutUser { get; set; }
     }
 }

@@ -28,8 +28,14 @@ namespace SecondTestApp.Web.Controllers
         {
             if (!ModelState.IsValid) return RedirectToAction("Index");
 
-            var newUser = createUserViewModel.Adapt<UserDTO>();
-            _userService.CreateUser(newUser);
+            var nameCheck = _userService.ifUserNameExists(createUserViewModel.Name);
+            var emailCheck = _userService.ifUserEmailExists(createUserViewModel.Email);
+
+            if(!nameCheck && !emailCheck)
+            {
+                var newUser = createUserViewModel.Adapt<UserDTO>();
+                _userService.CreateUser(newUser);
+            }
 
             return RedirectToAction("Index");   
         }

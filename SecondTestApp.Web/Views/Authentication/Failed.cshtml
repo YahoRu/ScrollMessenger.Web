@@ -1,2 +1,11 @@
-﻿
-<div class="col-md-12">Failed!</div>
+﻿@{
+    ViewData["Title"] = "Не удалось войти";
+    Layout = null;
+}
+<div class="col-md-12">Не получилось выполнить вход. Неверный логин или пароль!</div>
+<div class="text-center">
+    <ul>
+        <p align="center"><a href="/Authentication/Index">Войти</a></p>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Index">Войти</a> @*TODO как лучше?*@
+    </ul>
+</div>

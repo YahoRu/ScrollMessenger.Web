@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Добавление чата";
+    TempData["UserName"] = "UserName"; /*TODO Что делать со вторым юзером чата?*/
 }
 
 
@@ -9,10 +10,10 @@
     @using (Html.BeginForm("CreateNewChat", "Chats", FormMethod.Post))
     {
         <div class="col-md-12">
-            Создать группу:
+            С кем начать чат:
         </div>
         <div class="col-md-12">
-            @Html.CheckBoxFor(model => model.MultipleChat)
+            @Html.TextBoxFor(model => model.MultipleChat)
         </div>
 
         <div class="col-md-12">

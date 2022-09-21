@@ -27,6 +27,42 @@ namespace MessengerV3.BLL.Services
             _userRepository.Save();
         }        
 
+        public bool ifUserNameExists(string name)
+        {
+            var allUsers = _userRepository.GetAll();
+
+            foreach (var user in allUsers)
+            {
+                if (user.Name.Equals(name)) return true;
+            }
+
+            return false;
+        }
+
+        public bool ifUserEmailExists(string email)
+        {
+            var allUsers = _userRepository.GetAll();
+
+            foreach (var user in allUsers)
+            {
+                if (user.Email.Equals(email)) return true;
+            }
+
+            return false;
+        }
+
+        public bool PasswordCheck(string userName, string password)
+        {
+            var allUsers = _userRepository.GetAll();
+
+            foreach (var user in allUsers)
+            {
+                if (user.Name.Equals(userName) && user.Password.Equals(password)) return true;
+            }
+
+            return false;
+        }
+
         public UserDTO GetUser(int userId)
         {
            return _userRepository.Get(userId).Adapt<UserDTO>();

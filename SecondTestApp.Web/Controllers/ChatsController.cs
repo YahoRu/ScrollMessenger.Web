@@ -24,7 +24,7 @@ namespace SecondTestApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateChat(CreateChatViewModel createChatViewModel)
+        public IActionResult CreateNewChat(CreateChatViewModel createChatViewModel)
         {
             if (ModelState.IsValid) return RedirectToAction("Index"); 
             _chatService.CreateChat(createChatViewModel.Adapt<ChatDTO>());
