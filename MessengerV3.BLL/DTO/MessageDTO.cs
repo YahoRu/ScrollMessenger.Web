@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessengerV3.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,8 @@ namespace MessengerV3.BLL.DTO
         public int MessageSenderId { get; set; }
         public string MessageText { get; set; }
         public DateTime MessageDate { get; set; }
+
+        public  ChatDTO Chat { get; set; }
+        public  UserDTO MessageSender { get; set; }
     }
 }

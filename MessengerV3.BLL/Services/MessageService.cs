@@ -3,6 +3,7 @@ using MessengerV3.BLL.DTO;
 using MessengerV3.BLL.Interfaces;
 using MessengerV3.DAL.Entities;
 using MessengerV3.DAL.Interfaces;
+using ScrollMessenger.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MessengerV3.BLL.Services
 {
     public class MessageService : IMessageService
     {
-        private readonly IRepository<Message> _messageRepository;
+        private readonly IMessageRepository<Message> _messageRepository;
 
-        public MessageService(IRepository<Message> messageRepository)
+        public MessageService(IMessageRepository<Message> messageRepository)
         {
             _messageRepository = messageRepository;
         }

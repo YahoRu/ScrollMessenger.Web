@@ -8,14 +8,15 @@ using MessengerV3.DAL.Interfaces;
 using MessengerV3.BLL.DTO;
 using MessengerV3.DAL.Entities;
 using Mapster;
+using ScrollMessenger.DAL.Interfaces;
 
 namespace MessengerV3.BLL.Services
 {
     public class ChatService : IChatService
     {
-        private readonly IRepository<Chat> _chatRepository;
+        private readonly IChatRepository<Chat> _chatRepository;
 
-        public ChatService(IRepository<Chat> chatRepository)
+        public ChatService(IChatRepository<Chat> chatRepository)
         {
             _chatRepository = chatRepository;
         }

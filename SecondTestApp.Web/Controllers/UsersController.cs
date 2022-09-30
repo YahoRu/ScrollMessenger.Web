@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using MessengerV3.BLL.DTO;
 using MessengerV3.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SecondTestApp.Web.Models;
 

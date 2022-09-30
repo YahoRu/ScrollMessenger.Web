@@ -7,20 +7,20 @@
 
 
 <div class="col-md-12">
-    @using (Html.BeginForm("CreateNewChat", "Chats", FormMethod.Post))
+    @using (Html.BeginForm("CreateChat", "Chats", FormMethod.Post))
     {
         <div class="col-md-12">
             С кем начать чат:
         </div>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.MultipleChat)
+            @Html.TextBoxFor(model => model.Users)
         </div>
 
         <div class="col-md-12">
             Название группы:
         </div>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.ChatName)
+            @Html.TextBoxFor(model => model.ChatName) 
         </div>
         <div class="col-md-12">
             <input type="submit" value="Submit"/>

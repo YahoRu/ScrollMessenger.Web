@@ -2,6 +2,7 @@
 using MessengerV3.DAL.EntitiyFramework;
 using MessengerV3.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using ScrollMessenger.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MessengerV3.DAL.Repositories
 {
-    public class ChatRepository : IRepository<Chat>
+    public class ChatRepository : IChatRepository<Chat>
     {
         private readonly MessengerV3DbContext _db;
 

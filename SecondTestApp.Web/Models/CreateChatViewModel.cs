@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using ScrollMessenger.Web.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecondTestApp.Web.Models
 {
@@ -10,5 +12,9 @@ namespace SecondTestApp.Web.Models
         public bool MultipleChat { get; set; }
         [Required]
         public int CreatorId { get; set; }
+        [Required]
+        public ICollection<MessageViewModel> Messages { get; set; }
+        [Required]
+        public ICollection<UserViewModel> Users { get; set; }
     }
 }

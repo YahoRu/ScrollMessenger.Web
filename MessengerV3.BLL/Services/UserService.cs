@@ -3,6 +3,7 @@ using MessengerV3.BLL.DTO;
 using MessengerV3.BLL.Interfaces;
 using MessengerV3.DAL.Entities;
 using MessengerV3.DAL.Interfaces;
+using ScrollMessenger.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MessengerV3.BLL.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IUserRepository<User> _userRepository;
 
-        public UserService(IRepository<User> userRepository)
+        public UserService(IUserRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }
@@ -37,7 +38,7 @@ namespace MessengerV3.BLL.Services
             }
 
             return false;
-        }
+        } 
 
         public bool ifUserEmailExists(string email)
         {

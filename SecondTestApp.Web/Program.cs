@@ -8,6 +8,7 @@ using MessengerV3.DAL.Repositories;
 using MessengerV3.BLL.Interfaces;
 using MessengerV3.BLL.Services;
 using MessengerV3.DAL.Entities;
+using ScrollMessenger.DAL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,12 +21,15 @@ builder.Services.AddDbContext<MessengerV3DbContext>(optionsBuilder =>
 builder.Services.AddScoped<IChatService, ChatService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IMessageService, MessageService>();
-builder.Services.AddScoped<IRepository<Chat>, ChatRepository>();
-builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddScoped<IRepository<Message>, MessageRepository>();
+builder.Services.AddScoped<IChatRepository<Chat>, ChatRepository>();
+builder.Services.AddScoped<IUserRepository<User>, UserRepository>();
+builder.Services.AddScoped<IMessageRepository<Message>, MessageRepository>();
+//builder.Services.AddScoped<IRepository<Chat>, ChatRepository>();
+//builder.Services.AddScoped<IRepository<User>, UserRepository>();
+//builder.Services.AddScoped<IRepository<Message>, MessageRepository>();
 builder.Services.AddSingleton<ShortestMiddleware, ShortestMiddleware>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-    {
+    { 
         options.LoginPath = new PathString("/Authentication");
         options.ExpireTimeSpan = TimeSpan.FromHours(12);
         options.SlidingExpiration = true;
