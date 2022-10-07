@@ -14,6 +14,8 @@ namespace MessengerV3.BLL.Interfaces
         UserDTO GetUser(int userId);
         bool ifUserNameExists(string name);
         bool ifUserEmailExists(string mail);
+        UserDTO GetUserByName(string userName);
+        UserDTO GetByName(string name);
         bool PasswordCheck(string userName, string password);
         IEnumerable<UserDTO> GetAllUsers();
     }

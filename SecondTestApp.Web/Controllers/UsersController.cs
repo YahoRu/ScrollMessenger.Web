@@ -3,6 +3,7 @@ using MessengerV3.BLL.DTO;
 using MessengerV3.BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ScrollMessenger.Web.Models;
 using SecondTestApp.Web.Models;
 
 namespace SecondTestApp.Web.Controllers
@@ -43,6 +44,12 @@ namespace SecondTestApp.Web.Controllers
 
         [HttpGet]
         public IActionResult CreateUser()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UserNotFound()
         {
             return View();
         }

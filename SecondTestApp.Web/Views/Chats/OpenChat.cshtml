@@ -1,0 +1,38 @@
+﻿@model ChatViewModel
+
+@{
+    ViewBag.Title = "Чат с пользователем";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <h2>Users List</h2>
+        <ul>
+            @foreach (var chat in Model.Messages)
+            {
+                <li>@chat.</li>
+            }
+        </ul>
+    </div>
+</div> 
+
+<div class="col-md-12">
+    @using (Html.BeginForm("SendMessage", "Messages", FormMethod.Post))
+    {
+        <div class="col-md-12">
+            Ваше сообщение:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.) 
+        </div>
+        <div class="col-md-12">
+            Название Чата:
+        </div>
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.ChatName) 
+        </div
+        <div class="col-md-12">
+            <input type="submit" value="Submit"/>
+        </div>
+    }
+</div>

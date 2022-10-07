@@ -69,6 +69,22 @@ namespace MessengerV3.BLL.Services
            return _userRepository.Get(userId).Adapt<UserDTO>();
         }
 
+        public UserDTO GetByName(string name)
+        {
+            return _userRepository.GetByName(name).Adapt<UserDTO>();
+        }
+
+        public UserDTO GetUserByName(string userName) // TODO Delete
+        {
+            var allUsers = _userRepository.GetAll();
+
+            foreach (var user in allUsers)
+            {
+                if (user.Name.Equals(userName))  return user.Adapt<UserDTO>();
+            }
+            return null;
+        }
+
         public IEnumerable<UserDTO> GetAllUsers()  // TODO or delete?
         {
             var users = _userRepository.GetAll();

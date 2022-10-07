@@ -11,10 +11,12 @@ namespace SecondTestApp.Web.Models
         [Required]
         public bool MultipleChat { get; set; }
         [Required]
-        public int CreatorId { get; set; }
+        public int CreatorId { get; set;  }
         [Required]
-        public ICollection<MessageViewModel> Messages { get; set; }
+        public List<MessageViewModel> Messages { get; set; }
         [Required]
-        public ICollection<UserViewModel> Users { get; set; }
+        public List<UserViewModel> Users { get; set; }
+
+        public string UserNameToAdd { get; set; } 
     }
 }

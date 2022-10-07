@@ -30,6 +30,12 @@ namespace MessengerV3.DAL.Repositories
             return _db.Users.Find(id);
         }
 
+        public User GetByName(string name)
+        {
+            //return _db.Users.Find(name);
+            return _db.Users.FirstOrDefault(x => x.Name == name);
+        }
+
         public void Create(User user)
         {
             _db.Users.Add(user);

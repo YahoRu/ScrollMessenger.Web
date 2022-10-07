@@ -12,6 +12,7 @@ namespace ScrollMessenger.DAL.Interfaces
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Func<T, bool> predicate);
         T Get(int id);
+        T GetByName(string name);
         void Create(T item);
         void Update(T item);
         void Delete(int id);

@@ -31,7 +31,7 @@ namespace SecondTestApp.Web.Controllers
             var userCheckName = _userService.ifUserNameExists(loginViewModel.Name);
             var PasswordCheck = _userService.PasswordCheck(loginViewModel.Name, loginViewModel.Password);
 
-            if(!userCheckName && !PasswordCheck) return RedirectToAction("Failed");
+            if(!userCheckName || !PasswordCheck) return RedirectToAction("Failed");
 
             var user = AuthenticateUser(loginViewModel.Name, loginViewModel.Password);
 
