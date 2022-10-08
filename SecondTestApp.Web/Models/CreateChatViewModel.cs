@@ -13,6 +13,8 @@ namespace SecondTestApp.Web.Models
         [Required]
         public int CreatorId { get; set;  }
         [Required]
+        public UserViewModel Creator { get; set; }
+
         public List<MessageViewModel> Messages { get; set; }
         [Required]
         public List<UserViewModel> Users { get; set; }

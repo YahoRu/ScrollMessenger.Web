@@ -8,10 +8,14 @@
     <div class="col-md-12">
         <h2>Users List</h2>
         <ul>
-            @foreach (var chat in Model.Messages)
+            @if(Model.Messages.Count > 0) 
             {
-                <li>@chat.</li>
-            }
+                @foreach (var chat in Model.Messages) 
+                {
+                    <li>@chat</li>
+                }
+            } else  { <div class="col-md-12">Тут пока пусто!</div> }
+            
         </ul>
     </div>
 </div> 
@@ -23,7 +27,7 @@
             Ваше сообщение:
         </div>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.) 
+            @Html.TextBoxFor(model => model.Messages.Capacity) 
         </div>
         <div class="col-md-12">
             Название Чата:

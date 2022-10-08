@@ -2,6 +2,7 @@
 using MessengerV3.BLL.DTO;
 using MessengerV3.BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ScrollMessenger.Web.Models;
 using SecondTestApp.Web.Models;
 using System.Linq;
@@ -33,7 +34,11 @@ namespace SecondTestApp.Web.Controllers
         {
             ClaimsPrincipal currentUser = this.User;
             var currentUserName = currentUser.FindFirst(ClaimTypes.Name).Value;
-            createChatViewModel.CreatorId = _userService.GetByName(currentUserName).Id;
+            var currentUserViewModel = _userService.GetByName(currentUserName);
+
+            //Context.Entry(entity).State = EntityState.Detached // TODO >???
+            createChatViewModel.CreatorId = currentUserViewModel.Id;
+            createChatViewModel.Creator = currentUserViewModel.Adapt<UserViewModel>();
 
             var userToAdd = _userService.GetByName(createChatViewModel.UserNameToAdd).Adapt<UserViewModel>();
             if (userToAdd is null) return RedirectToAction("UserNotFound", "Users");
@@ -41,14 +46,22 @@ namespace SecondTestApp.Web.Controllers
             if (ModelState.IsValid) return RedirectToAction("Index");
 
             createChatViewModel.Users = new List<UserViewModel>();
+            createChatViewModel.Messages = new List<MessageViewModel>();
             createChatViewModel.Users.Add(userToAdd);
-            _chatService.CreateChat(createChatViewModel.Adapt<ChatDTO>());
+            var result = createChatViewModel.Adapt<ChatDTO>();
+            _chatService.CreateChat(result);
 
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult CreateChat()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult OpenChat()
         {
             return View();
         }

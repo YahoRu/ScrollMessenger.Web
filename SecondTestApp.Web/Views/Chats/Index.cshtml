@@ -11,7 +11,9 @@
         <ul>
             @foreach (var chat in Model.Chats)
             {
-                <li>@chat.ChatName @chat.CreatorId @chat.MultipleChat</li>
+                <li>@chat.ChatName @chat.CreatorId @chat.MultipleChat  <a href="/Chats/OpenChat">Открыть чат</a>
+                </li>
+                
             }
         </ul>
     </div>

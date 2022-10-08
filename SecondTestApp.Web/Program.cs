@@ -27,7 +27,6 @@ builder.Services.AddScoped<IMessageRepository<Message>, MessageRepository>();
 //builder.Services.AddScoped<IRepository<Chat>, ChatRepository>();
 //builder.Services.AddScoped<IRepository<User>, UserRepository>();
 //builder.Services.AddScoped<IRepository<Message>, MessageRepository>();
-builder.Services.AddSingleton<ShortestMiddleware, ShortestMiddleware>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
     { 
         options.LoginPath = new PathString("/Authentication");
@@ -52,8 +51,6 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
-//app.UseMiddleware<ShortestMiddleware>();
 
 app.MapControllerRoute(
     name: "default",

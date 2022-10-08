@@ -34,11 +34,13 @@ namespace SecondTestApp.Web.Controllers
             if(!userCheckName || !PasswordCheck) return RedirectToAction("Failed");
 
             var user = AuthenticateUser(loginViewModel.Name, loginViewModel.Password);
+            loginViewModel.Id = user.Id;
 
             var claim = new List<Claim>
             {
                 new(ClaimTypes.Name, loginViewModel.Name),
-                new("Password", loginViewModel.Password)
+                new("Password", loginViewModel.Password),
+                new("Id", user.Id.ToString())
             };
 
             var claimsIdentity = new ClaimsIdentity(claim, CookieAuthenticationDefaults.AuthenticationScheme);

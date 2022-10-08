@@ -1,12 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MessengerV3.BLL.Interfaces;
+
+using Microsoft.AspNetCore.Mvc;
+using ScrollMessenger.Web.Models;
 
 namespace ScrollMessenger.Web.Controllers
 {
     public class MessagesController : Controller
     {
-        public IActionResult Index()
+        private IMessageService _messageRepository;
+
+        public MessagesController(IMessageService messageService)
         {
-            return View();
+            _messageRepository = messageService;
+        }
+        public IActionResult Index()
+        { 
+            return View(); 
+        }
+
+        [HttpPost]
+        public IActionResult SendMessage(MessageViewModel messageViewModel)
+        {
+            return null;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace MessengerV3.DAL.Repositories
     public class ChatRepository : IChatRepository<Chat>
     {
         private readonly MessengerV3DbContext _db;
-
+         
         public ChatRepository(MessengerV3DbContext db)
         {
             _db = db;

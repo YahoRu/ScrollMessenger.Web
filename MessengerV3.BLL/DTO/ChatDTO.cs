@@ -14,6 +14,7 @@ namespace MessengerV3.BLL.DTO
         public bool MultipleChat { get; set; }
         public int CreatorId { get; set; }
 
+        public  UserDTO Creator { get; set; } 
         public  ICollection<MessageDTO> Messages { get; set; }
         public  ICollection<UserDTO> Users { get; set; }
     }
