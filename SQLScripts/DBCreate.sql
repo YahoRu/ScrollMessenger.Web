@@ -17,7 +17,7 @@ CREATE TABLE [Chat](
 Id int not null identity(1,1),
 ChatName nvarchar(35) not null,
 MultipleChat bit not null,
--- del CreatorId int not null, 
+CreatorId int not null,  -- del
 CONSTRAINT PK_Id Primary Key(Id),
 CONSTRAINT FK_Creator_Id FOREIGN KEY (CreatorId) references [User](Id));
 
